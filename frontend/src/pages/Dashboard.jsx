@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppLayout from "../components/layout/AppLayout";
-import { getLoginUrl, getRepositories } from "../services/api";
+import {
+  API_BASE_URL,
+  getLoginUrl,
+  getRepositories,
+} from "../services/api";
 import { useAuth } from "../hooks/useAuth";
 
 function Dashboard() {
@@ -17,7 +21,7 @@ function Dashboard() {
     try {
       const data = await getLoginUrl();
 
-      window.location.href = `http://localhost:8080${data.url}`;
+      window.location.href = `${API_BASE_URL}${data.url}`;
     } catch (error) {
       console.error("GitHub login failed:", error);
     }
